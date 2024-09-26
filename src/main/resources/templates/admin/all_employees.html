@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>用户管理</title>
+    <th:block th:replace="~{/admin/common_resources::common_css}"></th:block>
+    <th:block th:replace="~{/admin/common_resources::common_js}"></th:block>
+</head>
+
+<body class="hold-transition skin-purple sidebar-mini">
+
+    <div class="wrapper">
+
+    <header th:replace="~{/admin/common_header::header}"></header>
+    <aside th:replace="~{/admin/common_aside}"></aside>
+
+
+
+        <div class="content-wrapper">
+
+            <!-- 内容头部 -->
+            <section class="content-header">
+                <h1>
+                    员工管理
+                    <small>员工列表</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                    <li><a href="#">员工管理</a></li>
+                    <li class="active">员工列表</li>
+                </ol>
+            </section>
+            <!-- 内容头部 /-->
+
+            <!-- 正文区域 -->
+            <section class="content">
+
+                <!-- .box-body -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">列表</h3>
+                    </div>
+
+                    <div class="box-body">
+
+                        <!-- 数据表格 -->
+                        <div class="table-box">
+
+                            <!--工具栏-->
+                            <div class="pull-left">
+                                <div class="form-group form-inline">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default" title="新建"><i class="fa fa-file-o"></i> 新建</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--工具栏/-->
+
+                            <!--数据列表-->
+                            <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+                                <thead>
+                                <tr>
+                                    <th class="" style="padding-right:0px;">
+                                        <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                                    </th>
+                                    <th class="sorting_asc">姓</th>
+                                    <th class="sorting_desc">名</th>
+                                    <th class="text-center sorting">生日</th>
+                                    <th class="sorting_asc sorting_asc_disabled">入职日期</th>
+                                    <th class="sorting_desc sorting_desc_disabled">职位</th>
+                                    <th class="sorting">薪水</th>
+                                </tr>
+                                </thead>
+                                <tbody>mybatis-plus:
+
+
+                                <tr th:each="employee : ${employeesPage.records}">
+                                    <input type="hidden" th:value="${employee.eid}">
+                                    <td><input name="ids" type="checkbox"></td>
+                                    <td th:text="${employee.firstName}"></td>
+
+                                    <td th:text="${employee.lastName}"></td>
+
+                                    <td th:text="${employee.birthDate}"></td>
+
+                                    <td th:text="${employee.hireDate}"></td>
+
+                                    <td th:text="${employee.position}"></td>
+
+                                    <td th:text="${employee.salary}"></td>
+                                    <td class="text-center">开启</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn bg-olive btn-xs">修改</button>
+                                        <button type="button" class="btn bg-olive btn-xs">解雇</button>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                                <!--
+                            <tfoot>
+                            <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                            </tr>
+                            </tfoot>-->
+                            </table>
+                            <!--数据列表/-->
+
+                        </div>
+                        <!-- 数据表格 /-->
+
+
+                    </div>
+                    <!-- /.box-body -->
+
+                    <!-- .box-footer-->
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            <div class="form-group form-inline">
+                                总共2 页，共14 条数据。 每页
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select> 条
+                            </div>
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">首页</a>
+                                </li>
+                                <li><a href="#">上一页</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">下一页</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">尾页</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.box-footer-->
+
+
+
+                </div>
+
+            </section>
+            <!-- 正文区域 /-->
+
+        </div>
+
+
+
+
+        <footer th:replace="~{/admin/common_footer::footer}"></footer>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -3,18 +3,22 @@
 
 <head>
     <title>用户管理</title>
-    <th:block th:replace="/admin/common_resources::common_css"></th:block>
-    <th:block th:replace="/admin/common_resources::common_js"></th:block>
+    <th:block th:replace="~{/admin/common_resources::common_css}"></th:block>
+    <th:block th:replace="~{/admin/common_resources::common_js}"></th:block>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
-    <header th:replace="/admin/common_header::header"></header>
-    <aside th:replace="/admin/common_aside"></aside>
     <div class="wrapper">
-        <div class="content-wrapper">
-        </div>
+
+        <header th:replace="~{/admin/common_header::header}"></header>
+        <aside th:replace="~{/admin/common_aside}"></aside>
+    <div class="content-wrapper">
     </div>
-    <footer th:replace="/admin/common_footer::footer"></footer>
+
+    <footer th:replace="~{/admin/common_footer::footer}"></footer>
+
+
+    </div>
 </body>
 
 </html>

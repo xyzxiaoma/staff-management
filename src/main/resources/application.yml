@@ -4,9 +4,14 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://staff?serverTimezone=UTC
+    url: jdbc:mysql:///staff?serverTimezone=UTC
     username: root
     password: root
+
+mybatis-plus:
+  configuration:
+    #禁用驼峰命名自动1转换为下划线
+    map-underscore-to-camel-case: false
 
 
 logging:
