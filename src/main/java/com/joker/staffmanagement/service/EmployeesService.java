@@ -6,6 +6,9 @@ import com.joker.staffmanagement.mapper.EmployeesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 @Service
 public class EmployeesService {
     @Autowired
@@ -14,10 +17,12 @@ public class EmployeesService {
     //查询所有员工
     public Page<Employees> findPage(int page,int size){
         Page employeesPage = employeesMapper.selectPage(new Page(page, size), null);
-
         return employeesPage;
     }
 
-
+    //添加员工
+    public void add(Employees employees){
+        employeesMapper.insert(employees);
+    }
 
 }

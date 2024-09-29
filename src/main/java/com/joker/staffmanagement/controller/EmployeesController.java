@@ -27,4 +27,17 @@ public class EmployeesController {
         return modelAndView;
     }
 
+    @RequestMapping("/add_page")
+    public String addPage(){
+        return "/admin/add_employees";
+    }
+
+    @RequestMapping("/add")
+    public String add(Employees employees){
+        employeesService.add(employees);
+        return "redirect:/employees/all";
+    }
+
+
+
 }

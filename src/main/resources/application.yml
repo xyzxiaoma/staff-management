@@ -12,6 +12,9 @@ mybatis-plus:
   configuration:
     #禁用驼峰命名自动1转换为下划线
     map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      id-type: auto #设置主键自增
 
 
 logging:

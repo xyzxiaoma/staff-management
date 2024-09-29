@@ -50,7 +50,9 @@
                             <div class="pull-left">
                                 <div class="form-group form-inline">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建"><i class="fa fa-file-o"></i> 新建</button>
+                                        <a th:href="@{/employees/add_page}">
+                                            <button type="button" class="btn btn-default" title="新建"><i class="fa fa-file-o"></i> 新建</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +73,7 @@
                                     <th class="sorting">薪水</th>
                                 </tr>
                                 </thead>
-                                <tbody>mybatis-plus:
+                                <tbody>
 
 
                                 <tr th:each="employee : ${employeesPage.records}">
