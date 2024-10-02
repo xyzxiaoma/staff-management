@@ -25,4 +25,14 @@ public class EmployeesService {
         employeesMapper.insert(employees);
     }
 
+    //根据员工id查询员工信息
+    public Employees findById(Integer eid){
+        return employeesMapper.selectById(eid);
+    }
+
+    //根据id更新用户
+    public void updateById(Employees employees){
+        employeesMapper.updateById(employees);
+    }
+
 }

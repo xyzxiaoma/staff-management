@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>修改用户</title>
+    <th:block th:replace="~{/admin/common_resources::common_css}"></th:block>
+    <th:block th:replace="~{/admin/common_resources::common_js}"></th:block>
+</head>
+
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+
+        <header th:replace="~{/admin/common_header::header}"></header>
+        <aside th:replace="~{/admin/common_aside}"></aside>
+    <div class="content-wrapper">
+
+        <!--基础控件-->
+        <div class="tab-pane" id="tab-common">
+            <div class="row data-type">
+
+                <form th:action="@{/employees/edit_employees}" method="post">
+
+                <input type="hidden" th:value="${employees.eid}" name="eid">
+
+                <div class="col-md-2 title">姓</div>
+                <div class="col-md-4 data">
+                    <input type="text" class="form-control" name="firstName" th:value="${employees.firstName}">
+                </div>
+
+                <div class="col-md-2 title">名</div>
+                <div class="col-md-4 data">
+                    <input type="text" class="form-control" name="lastName" th:value="${employees.lastName}">
+                </div>
+
+                <div class="col-md-2 title">生日</div>
+                <div class="col-md-4 data">
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" name="birthDate" id="datepicker1" th:value="${employees.birthDate}">
+                    </div>
+                </div>
+
+                <div class="col-md-2 title">入职日期</div>
+                <div class="col-md-4 data">
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" name="hireDate" id="datepicker2" th:value="${employees.hireDate}">
+                    </div>
+                </div>
+
+                <div class="col-md-2 title">岗位</div>
+                <div class="col-md-4 data">
+                    <select class="form-control" name="position">
+                        <option th:selected="${employees.position == '经理'}">经理</option>
+                        <option th:selected="${employees.position == '开发工程师'}">开发工程师</option>
+                        <option th:selected="${employees.position == '会计'}">会计</option>
+                        <option th:selected="${employees.position == '市场专员'}">市场专员</option>
+                        <option th:selected="${employees.position == '测试工程师'}">测试工程师</option>
+                        <option th:selected="${employees.position == '人事专员'}">人事专员</option>
+                        <option th:selected="${employees.position == '财务主管'}">财务主管</option>
+                        <option th:selected="${employees.position == '市场经理'}">市场经理</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2 title">部门</div>
+                <div class="col-md-4 data">
+                    <select class="form-control" name="did">
+                        <option value="1" th:selected="${employees.did == 1}">人力资源部</option>
+                        <option value="2" th:selected="${employees.did == 2}">技术部</option>
+                        <option value="3" th:selected="${employees.did == 3}">财务部</option>
+                        <option value="4" th:selected="${employees.did == 4}">市场部</option>
+
+                    </select>
+                </div>
+
+                <div class="col-md-2 title">薪水</div>
+                <div class="col-md-4 data">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="salary" th:value="${employees.salary}">
+                    </div>
+                </div>
+
+
+                <div class="col-md-2 title"></div>
+                <div class="col-md-10 data text-center">
+                    <button type="submit" class="btn bg-maroon">修改</button>
+                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+                </div>
+
+                </form>
+
+            </div>
+        </div>
+        <!--基础控件/-->
+
+    </div>
+
+    <footer th:replace="~{/admin/common_footer::footer}"></footer>
+
+
+    </div>
+</body>
+
+<script>
+
+
+    $(document).ready(function() {
+
+        //Date picker
+        $('#datepicker1').datepicker({
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            language: 'zh-CN'
+        });
+
+        $('#datepicker2').datepicker({
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            language: 'zh-CN'
+        });
+
+        //Date range picker
+        $('#reservation').daterangepicker({
+            locale: {
+                applyLabel: '确认',
+                cancelLabel: '取消',
+                fromLabel: '起始时间',
+                toLabel: '结束时间',
+                customRangeLabel: '自定义',
+                firstDay: 1
+            },
+            opens: 'left', // 日期选择框的弹出位置
+            separator: ' 至 '
+            //showWeekNumbers : true,     // 是否显示第几周
+        });
+
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            format: 'MM-DD-YYYY h:mm A',
+            locale: {
+                applyLabel: '确认',
+                cancelLabel: '取消',
+                fromLabel: '起始时间',
+                toLabel: '结束时间',
+                customRangeLabel: '自定义',
+                firstDay: 1
+            },
+            opens: 'right', // 日期选择框的弹出位置
+            separator: ' 至 '
+        });
+
+        //Date range as a button
+        $('#daterange-btn').daterangepicker({
+                locale: {
+                    applyLabel: '确认',
+                    cancelLabel: '取消',
+                    fromLabel: '起始时间',
+                    toLabel: '结束时间',
+                    customRangeLabel: '自定义',
+                    firstDay: 1
+                },
+                opens: 'right', // 日期选择框的弹出位置
+                separator: ' 至 ',
+                ranges: {
+                    '今日': [moment(), moment()],
+                    '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '最近7日': [moment().subtract(6, 'days'), moment()],
+                    '最近30日': [moment().subtract(29, 'days'), moment()],
+                    '本月': [moment().startOf('month'), moment().endOf('month')],
+                    '上个月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+            },
+            function(start, end) {
+                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
+        );
+
+    });
+
+</script>
+
+
+</html>

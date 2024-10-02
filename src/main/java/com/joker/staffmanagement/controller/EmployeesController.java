@@ -38,6 +38,21 @@ public class EmployeesController {
         return "redirect:/employees/all";
     }
 
+    @RequestMapping("/edit")
+    public ModelAndView edit(Integer eid){
+        ModelAndView modelAndView = new ModelAndView();
+        Employees employees = employeesService.findById(eid);
+        modelAndView.addObject("employees",employees);
+        modelAndView.setViewName("/admin/edit_employees");
+        return modelAndView;
+    }
+
+    @RequestMapping("/edit_employees")
+    public String edit_employees(Employees employees){
+        employeesService.updateById(employees);
+        return "redirect:/employees/all";
+    }
+
 
 
 }
