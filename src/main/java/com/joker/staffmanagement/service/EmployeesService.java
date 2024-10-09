@@ -35,4 +35,9 @@ public class EmployeesService {
         employeesMapper.updateById(employees);
     }
 
+    //根据id删除员工
+    public void deleteById(Integer eid){
+        employeesMapper.deleteById(eid);
+    }
+
 }

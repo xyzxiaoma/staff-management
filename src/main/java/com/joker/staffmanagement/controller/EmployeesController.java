@@ -53,6 +53,12 @@ public class EmployeesController {
         return "redirect:/employees/all";
     }
 
+    @RequestMapping("/delete")
+    public String delete(Integer eid){
+        employeesService.deleteById(eid);
+        return "redirect:/employees/all";
+    }
+
 
 
 }

@@ -93,7 +93,12 @@
                                     <td class="text-center">开启</td>
                                     <td class="text-center">
                                         <a th:href="@{/employees/edit(eid=${employee.eid})}" class="btn bg-olive btn-xs">修改</a>
-                                        <a th:href="@{/employees/delete(eid=${employee.eid})}" class="btn bg-olive btn-xs">解雇</a>
+                                        <a th:href="@{/employees/delete(eid=${employee.eid})}" class="btn bg-olive btn-xs" onclick="confirmDelete()">解雇</a>
+                                        <script>
+                                            function confirmDelete() {
+                                                return confirm("确定要解雇吗？");
+                                            }
+                                        </script>
                                     </td>
                                 </tr>
 
